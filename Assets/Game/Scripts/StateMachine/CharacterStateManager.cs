@@ -16,7 +16,6 @@ public class CharacterStateManager : MonoBehaviour
     public Animator anim;
     private void Start()
     {
-        anim = GetComponent<Animator>();
         CurrentState = IdleState;
 
         CurrentState.EnterState(this);

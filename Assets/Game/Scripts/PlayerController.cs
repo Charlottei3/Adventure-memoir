@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using CodeMonkey.Utils;
+using CodeMonkey;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,6 +15,10 @@ public class PlayerController : MonoBehaviour
             return instance;
         }
     }
+
+    [SerializeField] Transform point;
+    [SerializeField] float radius;
+    [SerializeField] LayerMask enemyMask;
 
     public float moveSpeed;
     public float jumpForce;
@@ -59,5 +65,19 @@ public class PlayerController : MonoBehaviour
     public void Jump()
     {
         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+    }
+
+    public void DamageEnemy()
+    {
+        Collider2D[] hitEnemy = Physics2D.OverlapCircleAll(point.position, radius, enemyMask);
+        foreach (Collider2D hit in hitEnemy)
+        {
+            Debug.Log(hit.gameObject.name);
+        }
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(point.position, radius);
     }
 }

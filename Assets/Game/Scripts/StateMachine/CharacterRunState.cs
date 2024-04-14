@@ -7,17 +7,21 @@ public class CharacterRunState : CharacterBaseState
     public override void EnterState(CharacterStateManager state)
     {
         state.ProcessInput();
-        Debug.Log("run-ing enter");
+
     }
 
     public override void LeaveState(CharacterStateManager state)
     {
-        Debug.Log("run-ing leave");
+
     }
 
     public override void UpdateState(CharacterStateManager state)
     {
         state.ChangeState(state.IdleState);
+        if (Input.GetKey(KeyCode.S))
+        {
+            state.ChangeState(state.SlideState);
+        }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -27,10 +31,6 @@ public class CharacterRunState : CharacterBaseState
         {
             state.ChangeState(state.AttackState);
         }
-        if (Input.GetKey(KeyCode.S))
-        {
-            state.ChangeState(state.SlideState);
-        }
-        Debug.Log("run-ing update");
+
     }
 }

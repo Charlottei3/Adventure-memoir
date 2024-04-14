@@ -7,12 +7,12 @@ public class CharacterIdleState : CharacterBaseState
     public override void EnterState(CharacterStateManager state)
     {
         state.SetInt("Def", 0);
-        Debug.Log("idle-ing enter");
+
     }
 
     public override void LeaveState(CharacterStateManager state)
     {
-        Debug.Log("idle-ing leave");
+
     }
 
     public override void UpdateState(CharacterStateManager state)
@@ -29,7 +29,6 @@ public class CharacterIdleState : CharacterBaseState
             state.ChangeState(state.AttackState);
         }
 
-        Debug.Log("idle-ing update");
 
     }
 }
