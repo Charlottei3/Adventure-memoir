@@ -11,6 +11,11 @@ public class MeleeEnemyBoss : MonoBehaviour
     [SerializeField] private LayerMask _layerPlayer;
     [SerializeField] private Animator _anim;
 
+    private EnemyPatrol _enemyPatrol;
+    private void Start()
+    {
+        _enemyPatrol = GetComponentInParent<EnemyPatrol>();
+    }
     private void Update()
     {
         _timeCountDown += Time.deltaTime;
@@ -22,6 +27,10 @@ public class MeleeEnemyBoss : MonoBehaviour
                 _timeCountDown = 0;
                 _anim.SetTrigger("Attack");
             }
+        }
+        if (_enemyPatrol != null)
+        {
+            _enemyPatrol.enabled = !PlayerIntheRegion();
         }
     }
 
