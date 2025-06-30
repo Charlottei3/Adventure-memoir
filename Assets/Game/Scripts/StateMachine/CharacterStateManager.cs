@@ -12,6 +12,11 @@ public class CharacterStateManager : MonoBehaviour
     public CharacterAttackState AttackState = new CharacterAttackState();
     public CharacterSlideState SlideState = new CharacterSlideState();
     public CharacterDeathState DeathState = new CharacterDeathState();
+    public CharacterStateEdgeGrab EdgeGrabState = new CharacterStateEdgeGrab();
+    public CharacterStateEdgeIdle EdgeIdelState = new CharacterStateEdgeIdle();
+    public CharacterStateHurt HurtState = new CharacterStateHurt();
+    public CharacterStateFall FallState = new CharacterStateFall();
+    public CharacterStateLadder LadderState = new CharacterStateLadder();
 
     public Animator anim;
     private void Start()
@@ -24,6 +29,7 @@ public class CharacterStateManager : MonoBehaviour
     private void Update()
     {
         CurrentState.UpdateState(this);
+
     }
 
     public void ChangeState(CharacterBaseState state)
@@ -40,7 +46,6 @@ public class CharacterStateManager : MonoBehaviour
 
     public void Jump()
     {
-        SetInt("Def", 1);
         PlayerController.Instance.Jump();
     }
 
@@ -64,7 +69,7 @@ public class CharacterStateManager : MonoBehaviour
         anim.SetInteger(name, value);
     }
 
-    private void SetTrig(string name)
+    public void SetTrig(string name)
     {
         anim.SetTrigger(name);
     }
