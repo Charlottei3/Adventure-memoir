@@ -28,7 +28,5 @@ public class CharacterIdleState : CharacterBaseState
             state.ChangeState(state.AttackState);
         }
         state.anim.SetBool("Wall", false);
-
-        Debug.Log("idle");
     }
 }

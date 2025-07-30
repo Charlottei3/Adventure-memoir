@@ -1,0 +1,2 @@
+Placeholder for Unity Fog Tile.
+Please create a Tile asset in Unity and assign the PNG to it.

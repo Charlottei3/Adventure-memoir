@@ -36,7 +36,5 @@ public class CharacterStateFall : CharacterBaseState
             state.anim.SetBool("Fall", false);
         }
 
-        Debug.Log("fall");
-
     }
 }
